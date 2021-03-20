@@ -1,0 +1,5 @@
+*.csv
+/tmp
+/.ipynb_checkpoints
+.ipynb_checkpoints/
+*.json
