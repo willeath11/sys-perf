@@ -49,40 +49,41 @@ def getSystemInfo():
 		goversion=goversion.strip().replace('\n', '')
 		info['sw_go_version']=goversion
 
-		dmi = DMIDecode()
-
-		# dmidecode -t system
-		info['system_manufacturer']=dmi.get("System")[0].get("Manufacturer")
-		info['system_product']=dmi.get("System")[0].get("Product Name")
-
-		# dmidecode -t memory
-		info['memory_type']=dmi.get("Memory Device")[0].get("Type")
-		info['memory_speed']=dmi.get("Memory Device")[0].get("Speed")
-		info['memory_manufacturer']=dmi.get("Memory Device")[0].get("Manufacturer")
-		info['memory_part']=dmi.get("Memory Device")[0].get("Part Number")
-
-		info['cache_l1_socket']=dmi.get("Cache")[0].get("Socket Designation")
-		info['cache_l1_mode']=dmi.get("Cache")[0].get("Operational Mode")
-		info['cache_l1_associativity']=dmi.get("Cache")[0].get("Associativity")
-		info['cache_l1_type']=dmi.get("Cache")[0].get("System Type")
-
-		info['cache_l2_socket']=dmi.get("Cache")[1].get("Socket Designation")
-		info['cache_l2_mode']=dmi.get("Cache")[1].get("Operational Mode")
-		info['cache_l2_associativity']=dmi.get("Cache")[1].get("Associativity")
-		info['cache_l2_type']=dmi.get("Cache")[1].get("System Type")
-
-		info['cache_l3_socket']=dmi.get("Cache")[1].get("Socket Designation")
-		info['cache_l3_mode']=dmi.get("Cache")[1].get("Operational Mode")
-		info['cache_l3_associativity']=dmi.get("Cache")[1].get("Associativity")
-		info['cache_l3_type']=dmi.get("Cache")[1].get("System Type")
-
-
-		# dmidecode -t baseboard
-		info['baseboard_product']=dmi.get("Baseboard")[0].get("Product Name")
-		info['baseboard_version']=dmi.get("Baseboard")[0].get("Version")
-
 
 		if info['platform']== "Darwin":
+			dmi = DMIDecode()
+
+			# dmidecode -t system
+			info['system_manufacturer']=dmi.get("System")[0].get("Manufacturer")
+			info['system_product']=dmi.get("System")[0].get("Product Name")
+
+			# dmidecode -t memory
+			info['memory_type']=dmi.get("Memory Device")[0].get("Type")
+			info['memory_speed']=dmi.get("Memory Device")[0].get("Speed")
+			info['memory_manufacturer']=dmi.get("Memory Device")[0].get("Manufacturer")
+			info['memory_part']=dmi.get("Memory Device")[0].get("Part Number")
+
+			info['cache_l1_socket']=dmi.get("Cache")[0].get("Socket Designation")
+			info['cache_l1_mode']=dmi.get("Cache")[0].get("Operational Mode")
+			info['cache_l1_associativity']=dmi.get("Cache")[0].get("Associativity")
+			info['cache_l1_type']=dmi.get("Cache")[0].get("System Type")
+
+			info['cache_l2_socket']=dmi.get("Cache")[1].get("Socket Designation")
+			info['cache_l2_mode']=dmi.get("Cache")[1].get("Operational Mode")
+			info['cache_l2_associativity']=dmi.get("Cache")[1].get("Associativity")
+			info['cache_l2_type']=dmi.get("Cache")[1].get("System Type")
+
+			info['cache_l3_socket']=dmi.get("Cache")[1].get("Socket Designation")
+			info['cache_l3_mode']=dmi.get("Cache")[1].get("Operational Mode")
+			info['cache_l3_associativity']=dmi.get("Cache")[1].get("Associativity")
+			info['cache_l3_type']=dmi.get("Cache")[1].get("System Type")
+
+
+			# dmidecode -t baseboard
+			info['baseboard_product']=dmi.get("Baseboard")[0].get("Product Name")
+			info['baseboard_version']=dmi.get("Baseboard")[0].get("Version")
+
+
 			print("if Darwin")
 			# fill in gpu, cache info, other ?
 			cache_l1_size=subprocess.check_output('sysctl hw.l1dcachesize', shell=True, text=True)
@@ -96,6 +97,37 @@ def getSystemInfo():
 			info['cache_l3_size']=cache_l3_size
 
 		elif info['platform']== "Linux":
+			dmi = DMIDecode()
+
+			# dmidecode -t system
+			info['system_manufacturer']=dmi.get("System")[0].get("Manufacturer")
+			info['system_product']=dmi.get("System")[0].get("Product Name")
+
+			# dmidecode -t memory
+			info['memory_type']=dmi.get("Memory Device")[0].get("Type")
+			info['memory_speed']=dmi.get("Memory Device")[0].get("Speed")
+			info['memory_manufacturer']=dmi.get("Memory Device")[0].get("Manufacturer")
+			info['memory_part']=dmi.get("Memory Device")[0].get("Part Number")
+
+			info['cache_l1_socket']=dmi.get("Cache")[0].get("Socket Designation")
+			info['cache_l1_mode']=dmi.get("Cache")[0].get("Operational Mode")
+			info['cache_l1_associativity']=dmi.get("Cache")[0].get("Associativity")
+			info['cache_l1_type']=dmi.get("Cache")[0].get("System Type")
+
+			info['cache_l2_socket']=dmi.get("Cache")[1].get("Socket Designation")
+			info['cache_l2_mode']=dmi.get("Cache")[1].get("Operational Mode")
+			info['cache_l2_associativity']=dmi.get("Cache")[1].get("Associativity")
+			info['cache_l2_type']=dmi.get("Cache")[1].get("System Type")
+
+			info['cache_l3_socket']=dmi.get("Cache")[1].get("Socket Designation")
+			info['cache_l3_mode']=dmi.get("Cache")[1].get("Operational Mode")
+			info['cache_l3_associativity']=dmi.get("Cache")[1].get("Associativity")
+			info['cache_l3_type']=dmi.get("Cache")[1].get("System Type")
+
+
+			# dmidecode -t baseboard
+			info['baseboard_product']=dmi.get("Baseboard")[0].get("Product Name")
+			info['baseboard_version']=dmi.get("Baseboard")[0].get("Version")
 			print("if Linux")
 			# Check if running as root .... provide a warning if not
 			root_user = (os.getuid() == 0 and True or False)
