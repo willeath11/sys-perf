@@ -96,13 +96,13 @@ def getSystemInfo():
 			cache_l3_size=cache_l3_size.split(' ', 1)[1].strip().replace('\n', '')
 			info['cache_l3_size']=cache_l3_size
 		elif info['architecture']=="aarch64":
-			network_description=subprocess.check_output('lshw -c network | grep -m1 product', shell=True, text=True)
+			network_description=subprocess.check_output('lshw -c network | grep -m1 description', shell=True, text=True)
 			network_description=network_description.split(':', 1)[1].split(' ', 1)[1].strip().replace('\n', '')
 			info['network_description']=network_description
 			network_capacity=subprocess.check_output('lshw -c network | grep -m1 capacity', shell=True, text=True)
 			network_capacity=network_capacity.split(':', 1)[1].split(' ', 1)[1].strip().replace('\n', '')
 			info['network_capacity']=network_capacity
-			system_product=subprocess.check_output('lshw -c display | grep product', shell=True, text=True)
+			system_product=subprocess.check_output('lshw | grep -m1 product', shell=True, text=True)
 			system_product=system_product.split(' ', 1)[1].strip().replace('\n', '')
 			info['system_product']=system_product
 
