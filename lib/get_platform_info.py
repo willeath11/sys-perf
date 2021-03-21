@@ -96,20 +96,17 @@ def getSystemInfo():
 			cache_l3_size=cache_l3_size.split(' ', 1)[1].strip().replace('\n', '')
 			info['cache_l3_size']=cache_l3_size
 		elif info['architecture']=="aarch64":
-			gpu=subprocess.check_output('lshw -c display | grep product', shell=True, text=True)
-			gpu=gpu.split(' ', 1)[1].strip().replace('\n', '')
 			network_interface=subprocess.check_output('lshw -c network | grep -m1 product', shell=True, text=True)
 			network_interface=network_interface.split(':', 1)[1].split(' ', 1)[1].strip().replace('\n', '')
 			info['network_interface']=network_interface
 			network_capacity=subprocess.check_output('lshw -c network | grep -m1 capacity', shell=True, text=True)
 			network_capacity=network_capacity.split(':', 1)[1].split(' ', 1)[1].strip().replace('\n', '')
 			info['network_capacity']=network_capacity
-
 			system_product=subprocess.check_output('lshw -c display | grep product', shell=True, text=True)
 			system_product=system_product.split(' ', 1)[1].strip().replace('\n', '')
 			info['system_product']=system_product
 
-			
+
                         
 		elif info['platform']== "Linux":
 			dmi = DMIDecode()
