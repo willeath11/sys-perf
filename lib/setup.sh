@@ -2,7 +2,7 @@
 set -x #echo on
 pwd
 
-pip install pusutil
-
+sudo apt install python3-pip
+pip install psutil
 
 
