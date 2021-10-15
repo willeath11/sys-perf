@@ -1,4 +1,4 @@
-package main
+package libgo
 
 import (
 	//"bytes"
@@ -19,17 +19,16 @@ import (
 )
 
 
-func main() {
-	statsServer()
-}
-func dealwithErr(err error) {
+// Capital func names to export
+
+func DealwithErr(err error) {
 	if err != nil {
 		fmt.Println(err)
 		os.Exit(-1)
 	}
 }
 
-func statsServer() {
+func StatsServer() {
 	log.Printf("Staring statsServer..")
 
 
